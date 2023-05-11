@@ -19,28 +19,16 @@
     @include('navbar')
     @include('categories')
 
-    @php
-        $nameProd = ['mandazi', 'kuku', 'ndizi', 'pork', 'maziwa', 'nyama', 'ugali'];
-        $prodDesc = [
-            'Mandazi is a type of fried bread that is popular in East Africa.',
-            'Kuku is the Swahili word for chicken. This dish typically consists of grilled or roasted chicken.',
-            'Ndizi is the Swahili word for plantains. This dish is made by cooking ripe plantains in coconut milk.',
-            'Pork is a type of meat that comes from pigs. This dish can be prepared in many ways, such as grilled, roasted, or fried.',
-            'Maziwa is the Swahili word for milk. This dish can refer to any dish that contains milk, such as milk tea or milk pudding.',
-            'Nyama is the Swahili word for meat. This dish can refer to any dish that contains meat, such as beef stew or grilled lamb chops.',
-            'Ugali is a type of cornmeal porridge that is popular in East Africa. It is often served with stews or vegetables.'
-        ];
-    @endphp
-
     <div class="flex gap-2 overflow-clip">
-        @for ($i = 0, $prodNum = 1; $i < 7; $i++, $prodNum++)
-            @include('top-slide', ['prodNum' => $prodNum,
-            'nameProd' => $nameProd[$prodNum-1],
-            'prodDesc' => $prodDesc[$prodNum-1]
-            ])
-        @endfor
-    </div>
-    
+    @foreach (App\Models\Product::all() as $product)
+        @include('top-slide', [
+            'prodNum' => $loop->iteration,
+            'nameProd' => $product->name,
+            'prodDesc' => $product->description
+        ])
+    @endforeach
+</div>
+
 
     <div class="prose"><h1 class="m-3 mb-5">Chicken Wings</h1></div>
     @php
