@@ -1,3 +1,44 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+/* This will affect the whole body's scrollbar */
+body::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(240, 240, 240, 0);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(168, 229, 0);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    /* border: 3px solid rgba(0, 251, 17, 0.35);   creates padding around scroll thumb */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;    /* color of the scroll thumb on hover */
+}
+/* This will affect the whole body's scrollbar */
+div::-webkit-scrollbar {
+    height: 5px;               /* width of the entire scrollbar */
+}
+
+div::-webkit-scrollbar-track {
+    background: rgba(240, 240, 240, 0);        /* color of the tracking area */
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: rgb(168, 229, 0);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    /* border: 3px solid rgba(0, 251, 17, 0.35);   creates padding around scroll thumb */
+}
+
+div::-webkit-scrollbar-thumb:hover {
+    background-color: #555;    /* color of the scroll thumb on hover */
+}
+
+#follow-mouse {
+    transition: all 0.3s ease-out;
+}
+

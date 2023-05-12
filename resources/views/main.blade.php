@@ -12,22 +12,26 @@
     <script src="https://kit.fontawesome.com/af6aba113a.js" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ mix('js/app.js')}}"></script>
 </head>
 
-<body class="antialiased">
+<body class="antialiased simplebar">
+<div id="follow-mouse" class="bg-warning" style="position: absolute; z-index: 300000000; width: 10px; height: 10px; border-radius: 50%;"></div>
+
     @include('navbar')
     @include('categories')
 
-    <div class="flex gap-2 overflow-clip">
-    @foreach (App\Models\Product::all() as $product)
-        @include('top-slide', [
-            'prodNum' => $loop->iteration,
-            'nameProd' => $product->name,
-            'prodDesc' => $product->description
-        ])
-    @endforeach
-</div>
+    <div class="flex gap-2 overflow-x-scroll">
+        @foreach (App\Models\Product::all() as $product)
+            @include('top-slide', [
+                'prodNum' => $loop->iteration,
+                'nameProd' => $product->name,
+                'prodDesc' => $product->description
+            ])
+        @endforeach
+    </div>
 
 
     <div class="prose"><h1 class="m-3 mb-5">Chicken Wings</h1></div>
@@ -41,7 +45,7 @@
 
     <div class="flex gap-2 overflow-clip m-3">
         @foreach ($chickenWings as $index => $name)
-            @include('food-slide', 
+            @include('food-slide',
             ['prodName' => $name,
             'prodValue' => $index,
             'prodImage' => $imageSrc[$index]

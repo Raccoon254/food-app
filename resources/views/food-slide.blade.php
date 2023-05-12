@@ -16,7 +16,7 @@
       </h2>
       <p class="text-sm">Tender pieces of chicken fillet</p>
       <div class="bottom flex justify-between">
-          <div class="badge badge-outline">295.00 ₽</div>
+          <div class="badge badge-outline">25.00 ₽</div>
           <button class="btn btn-warning btn-outline rounded-full">Order &nbsp;<i class="fa-solid fa-plus"></i></button>
       </div>
     </div>
