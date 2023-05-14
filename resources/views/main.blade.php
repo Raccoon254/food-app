@@ -15,47 +15,40 @@
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ mix('js/app.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 
 <body class="antialiased simplebar">
-<div id="follow-mouse" class="bg-warning" style="position: absolute; z-index: 300000000; width: 10px; height: 10px; border-radius: 50%;"></div>
+@include('mainnav')
 
-    @include('navbar')
-    @include('categories')
+<div class=" relative z-0">
 
-    <div class="flex gap-2 overflow-x-scroll">
-        @foreach (App\Models\Product::all() as $product)
-            @include('top-slide', [
-                'prodNum' => $loop->iteration,
-                'nameProd' => $product->name,
-                'prodDesc' => $product->description
-            ])
+@php
+    $allProducts = App\Models\Product::all();
+    $categories = App\Models\Product::pluck('category')->unique();
+@endphp
+
+<div class="flex gap-2 overflow-x-scroll">
+    @foreach ($categories as $category)
+        @php
+            $product = App\Models\Product::where('category', $category)->first();
+        @endphp
+
+        @include('top-slide')
+    @endforeach
+</div>
+
+
+
+    <div class="prose"><h1 class="m-3 mb-5">Our Menu</h1></div>
+    <div class="product-container grid overflow-clip place-items-center align-middle grid-cols-1 md:grid-cols-4 lg:grid-cols-auto gap-5">
+        @foreach ($allProducts as $product)
+            @include('food-slide')
         @endforeach
     </div>
 
 
-    <div class="prose"><h1 class="m-3 mb-5">Chicken Wings</h1></div>
-    @php
-        $chickenWings = ['Prod', 'Prod', 'prod'];
-        $imageSrc = ['https://pos-en-node.oss-us-east-1.aliyuncs.com/%7B9F3C77F5-EA12-11EC-A6E3-44456F0161B7%7D/res_main4.jpg?x-oss-process=image%2Fauto-orient%2C1%2Fresize%2Cm_fill%2Cw_750%2Ch_320%2Fquality%2Cq_90%2Fformat%2Cjpg&ts=1683631598',
-        'https://pos-en-node.oss-us-east-1.aliyuncs.com/%7B9F3C77F5-EA12-11EC-A6E3-44456F0161B7%7D/res_main1.jpg?x-oss-process=image%2Fauto-orient%2C1%2Fresize%2Cm_fill%2Cw_750%2Ch_320%2Fquality%2Cq_90%2Fformat%2Cjpg&ts=1683631598',
-        'https://pos-en-node.oss-us-east-1.aliyuncs.com/%7B9F3C77F5-EA12-11EC-A6E3-44456F0161B7%7D/res_main3.jpg?x-oss-process=image%2Fauto-orient%2C1%2Fresize%2Cm_fill%2Cw_750%2Ch_320%2Fquality%2Cq_90%2Fformat%2Cjpg&ts=1683631598'
-    ];
-    @endphp
-
-    <div class="flex gap-2 overflow-clip m-3">
-        @foreach ($chickenWings as $index => $name)
-            @include('food-slide',
-            ['prodName' => $name,
-            'prodValue' => $index,
-            'prodImage' => $imageSrc[$index]
-            ])
-        @endforeach
-    </div>
-
-
-
-    <div class="test"></div>
+</div>
 </body>
 
 </html>

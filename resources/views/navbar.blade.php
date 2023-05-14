@@ -1,7 +1,7 @@
-<div class="navbar bg-base-100 mr-4">
+<div class="navbar bg-base-100 m-0 p-0">
     <div class="navbar-start">
-        <a class="btn btn-ghost normal-case text-xl">
-      <span class="h-6 w-6">
+        <a class="btn btn-ghost normal-case text-xl" href="/">
+      <span class="h-12 w-12">
         <img src="{{ asset('images/FoodAppLogo.png') }}" alt="Food App Logo" srcset="">
       </span>
             <span class="font-bold">
@@ -13,7 +13,7 @@
     </div>
     <div class="navbar-end">
 
-        <label class="swap swap-rotate">
+        <label class="swap swap-rotate hover:text-warning">
 
             <!-- this hidden checkbox controls the state -->
             <input type="checkbox" />
@@ -26,11 +26,11 @@
 
         </label>
 
-        <a class="hidden btn sm:flex  btn-warning m-3">Get Location</a>
+        <a class="hidden btn sm:flex  btn-warning m-3 btn-outline">Get Location</a>
 
         <div class="m-3">
             <!-- The button to open modal -->
-            <label for="my-modal-3" class="btn btn-ghost btn-circle avatar">
+            <label for="my-modal-3" class="btn btn-ghost btn-warning btn-circle avatar ring-2 ring-blue-500">
                 <div class="w-10 rounded-full">
                     <img src="https://thumbs.dreamstime.com/b/nice-to-talk-smart-person-indoor-shot-attractive-interesting-caucasian-guy-smiling-broadly-nice-to-112345489.jpg" />
                 </div>
@@ -52,11 +52,11 @@
             </div>
         </div>
 
-        <div class="dropdown dropdown-left">
-            <label tabindex="0" class="btn btn-ghost btn-circle">
+        <div class="dropdown dropdown-left" x-data="{ open: false }">
+            <label @click="open = !open" tabindex="0" class="btn btn-ghost btn-circle hover:btn-warning">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
             </label>
-            <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60">
+            <ul tabindex="0" x-show="open" @click.away="open = false" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60">
                 <li><a><span class="btn btn-circle avatar border-warning">
                             <i class="fa-solid fa-bars"></i>
                         </span>Menu</a></li>
@@ -83,3 +83,4 @@
 
     </div>
 </div>
+

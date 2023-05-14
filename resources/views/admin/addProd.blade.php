@@ -23,27 +23,27 @@
 
         <div class="form p-4 sm:p-0 flex flex-col justify-center align-middle content-center w-full flex-wrap">
             <div class="prose text-center"><h2>Add a Product to the database</h2></div>
-            <form class="flex flex-col w-full sm:w-8/12 gap-4 my-5">
+            <form class="flex flex-col w-full sm:w-8/12 gap-4 my-5" method="POST" action="/add-product" enctype="multipart/form-data">
+                @csrf
                 <label class="flex flex-col">
-                    <input type="text" placeholder="Product Name" class="input input-bordered input-warning" />
+                    <input type="text" name="product_name" placeholder="Product Name" class="input input-bordered input-warning" />
                 </label>
                 <label class="flex flex-col">
                     <span class="text-white-100">Upload Product Picture</span>
-                    <input type="file" class="file-input file-input-bordered file-input-warning" />
+                    <input type="file" accept="image/jpeg, image/png, image/gif" name="product_image" class="file-input file-input-bordered file-input-warning" />
                 </label>
                 <label class="flex flex-col">
-                    <textarea class="textarea textarea-lg textarea-warning" placeholder="Product Description"></textarea>
+                    <textarea class="textarea textarea-lg textarea-warning" name="product_description" placeholder="Product Description"></textarea>
                 </label>
                 <label class="flex flex-col">
-                    <input type="text" placeholder="Add Category" class="input input-bordered input-warning" />
+                    <input type="text" name="product_category" placeholder="Add Category" class="input input-bordered input-warning" />
                 </label>
                 <label class="flex flex-col">
-                    <input type="text" placeholder="Add Price" class="input input-bordered input-warning" />
+                    <input type="text" name="product_price" placeholder="Add Price" class="input input-bordered input-warning" />
                 </label>
                 <label class="flex flex-col">
                     <input type="submit" class="btn btn-outline btn-warning btn-bordered" />
                 </label>
-
             </form>
         </div>
     </div>

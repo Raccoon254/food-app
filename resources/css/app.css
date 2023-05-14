@@ -41,4 +41,33 @@ div::-webkit-scrollbar-thumb:hover {
 #follow-mouse {
     transition: all 0.3s ease-out;
 }
+.category-container {
+    position: relative;
+}
+
+.category-container .top-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.category-container .top-slide.active {
+    opacity: 1;
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 767px) {
+    .xxw {
+        display: none;
+    }
+}
+
+/* For larger devices */
+@media only screen and (min-width: 768px) {
+    .xxs {
+        display: none;
+    }
+}
 
