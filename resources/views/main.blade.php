@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
     <meta charset="utf-8">
@@ -19,29 +19,29 @@
 </head>
 
 <body class="antialiased simplebar">
-@include('mainnav')
+@include('mainNav')
 
 <div class=" relative z-0">
 
-@php
-    $allProducts = App\Models\Product::all();
-    $categories = App\Models\Product::pluck('category')->unique();
-@endphp
+    @php
+        $allProducts = App\Models\Product::all();
+        $categories = App\Models\Product::pluck('category')->unique();
+    @endphp
 
-<div class="flex gap-2 overflow-x-scroll">
-    @foreach ($categories as $category)
-        @php
-            $product = App\Models\Product::where('category', $category)->first();
-        @endphp
+    <div class="flex gap-2 overflow-x-scroll">
+        @foreach ($categories as $category)
+            @php
+                $product = App\Models\Product::where('category', $category)->first();
+            @endphp
 
-        @include('top-slide')
-    @endforeach
-</div>
-
+            @include('top-slide')
+        @endforeach
+    </div>
 
 
     <div class="prose"><h1 class="m-3 mb-5">Our Menu</h1></div>
-    <div class="product-container grid overflow-clip place-items-center align-middle grid-cols-1 md:grid-cols-4 lg:grid-cols-auto gap-5">
+    <div
+        class="product-container grid overflow-clip place-items-center align-middle grid-cols-1 md:grid-cols-4 lg:grid-cols-auto gap-5">
         @foreach ($allProducts as $product)
             @include('food-slide')
         @endforeach

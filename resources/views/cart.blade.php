@@ -1,6 +1,5 @@
-
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -12,9 +11,9 @@
 <div class="w-full">
     @include('mainNav')
 </div>
-<div class=" w-full grid grid-cols-1 sm:grid-cols-2 gap-4 text-white text-sm leading-6 bg-stripes-fuchsia rounded-lg">
+<div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm leading-6 bg-stripes-fuchsia rounded-lg">
 
-<div class="w-full">
+    <div class="w-full">
     <table class="table w-full">
         <!-- head -->
         <thead>
@@ -24,11 +23,18 @@
                 <div class="hidden md:block">Price</div>
             </th>
             <th>Quantity</th>
-            <th><a href="" class="btn btn-ghost"><i class="fa-solid fa-trash"></i></a></th>
+            <th><a href="{{ URL::to('/cart/clear') }}" class="btn btn-ghost"><i class="fa-solid fa-trash"></i></a>
+            </th>
         </tr>
         </thead>
         <tbody>
         <!-- row -->
+        @if(sizeof($cart)===0)
+            <tr>
+                <td>No data in cart</td>
+            </tr>
+        @else
+
         @foreach ($cart as $productId => $details)
             @php
             $prodQuantity = $details['quantity'];
@@ -61,35 +67,60 @@
 
             </th>
             <th>
-                <a href="" class="btn btn-ghost"><i class="fa-solid fa-trash"></i></a>
+                <a href="{{ URL::to('/cart/remove/'.$productId) }}" class="btn btn-ghost"><i class="fa-solid fa-trash"></i></a>
             </th>
         </tr>
 
         @endforeach
+        @endif
         <!-- End Row-->
 
         </tbody>
         <!-- foot -->
-        @if(sizeof($cart)>=5)
+        <!--if(sizeof($cart)>=5)-->
             <tfoot>
             <tr>
-                <th>Product</th>
                 <th>
-                    <div class="hidden md:block">Price</div>
+                    <a href="" class="btn btn-outline btn-warning ring-2 ring-blue-500 ring-inset rounded-full">Checkout</a>
                 </th>
-                <th>Quantity</th>
+                <th>
+                    <div class="hidden md:block">
+                        @php
+                            $totalItems = 0;
+                            $totalPrice = 0;
+                            foreach ($cart as $item) {
+                                $price = floatval
+                                ($item['price']);
+                                $quantity = intval($item['quantity']);
+                                $totalPrice += $price * $quantity;
+                                $totalItems += $quantity;
+                            }
+
+                            echo "Total Price: $" . number_format($totalPrice, 2);
+                        @endphp
+                    </div>
+                </th>
+                <th>Items ={{$totalItems}}</th>
                 <th><a href="" class="btn btn-ghost"><i class="fa-solid fa-trash"></i></a></th>
             </tr>
             </tfoot>
-        @endif
+        <!--endif-->
 
     </table>
-    <div class="wrap-actions m-4">
-        <a href="" class="btn">Checkout</a>
     </div>
-</div>
     <div class="rounded-lg hidden sm:flex shadow-lg bg-fuchsia-500 overflow-clip">
-        <img class="rounded-lg w-full max-h-[540px] object-cover" src="https://pos-en-node.oss-us-east-1.aliyuncs.com/%7B9F3C77F5-EA12-11EC-A6E3-44456F0161B7%7D/res_main4.jpg?x-oss-process=image%2Fauto-orient%2C1%2Fresize%2Cm_fill%2Cw_750%2Ch_320%2Fquality%2Cq_90%2Fformat%2Cjpg&ts=1683631598" alt="">
+        @php
+            $protocol = request()->isSecure() ? 'https://' : 'http://';
+            $currentUrl = url()->current();
+            $baseUrl = url('/');
+            $imageUrl = "";
+        @endphp
+        @if($baseUrl==="http://1279-197-248-106-13.ngrok-free.app")
+            <img class="rounded-lg w-full max-h-full object-cover" src="{{secure_asset('images/FoodApp.jpg')}}" alt="">
+        @else
+            <img class="rounded-lg w-full max-h-full object-cover" src="{{asset('images/FoodApp.jpg')}}" alt="">
+        @endif
+
     </div>
 </div>
 

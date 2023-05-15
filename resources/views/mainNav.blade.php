@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -17,11 +17,24 @@
 
 </head>
 <body>
-<div class=" top-0 z-50 px-3">
-    @include('navbar')
-</div>
-<div class=" sticky top-0 sm:top-0 z-40">
-    @include('categories', ['categories' => App\Models\Product::all()->pluck('category')->unique()])
-</div>
+
+@php
+    $currentUrl = url()->current();
+    $baseUrl = url('/');
+    $route = \Illuminate\Support\Str::replaceFirst($baseUrl, '', $currentUrl);
+@endphp
+ @if($route==="/cart")
+     <div class="sticky top-0 sm:top-0 z-50 px-3">
+         @include('navbar')
+     </div>
+ @else
+     <div class=" top-0 z-50 px-3">
+         @include('navbar')
+     </div>
+     <div class=" sticky top-0 sm:top-0 z-40">
+         @include('categories', ['categories' => App\Models\Product::all()->pluck('category')->unique()])
+     </div>
+ @endif
+
 </body>
 </html>

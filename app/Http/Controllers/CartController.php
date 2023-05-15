@@ -66,5 +66,20 @@ class CartController extends Controller
         Session::put('cart', $cart);
         return Redirect::back();
     }
+
+    public function clear(): \Illuminate\Http\RedirectResponse
+    {
+        Session::forget('cart');
+        return Redirect::back();
+    }
+
+    public function remove($productId): \Illuminate\Http\RedirectResponse
+    {
+        $cart = Session::get('cart', []);
+        unset($cart[$productId]);
+        Session::put('cart', $cart);
+        return Redirect::back();
+    }
+
 }
 

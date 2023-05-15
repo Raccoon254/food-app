@@ -43,3 +43,7 @@ Route::get('/cart/decrement/{productId}', array('uses' => \App\Http\Controllers\
 
 Route::post('/cart/update/{productId}', array('uses' => \App\Http\Controllers\CartController::class . '@update'));
 
+Route::get('/cart/clear', array('uses' => \App\Http\Controllers\CartController::class . '@clear'));
+
+Route::get('/cart/remove/{productId}', array('uses' => \App\Http\Controllers\CartController::class . '@remove'));
+
