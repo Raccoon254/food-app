@@ -27,6 +27,11 @@
      <div class="sticky top-0 sm:top-0 z-50 px-3">
          @include('navbar')
      </div>
+ @elseif($route==="/translate")
+     <div class="sticky top-0 sm:top-0 z-50 px-3">
+         @include('navbar')
+     </div>
+
  @else
      <div class=" top-0 z-50 px-3">
          @include('navbar')

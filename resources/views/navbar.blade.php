@@ -7,11 +7,11 @@
     $currentUrl = url()->current();
     $baseUrl = url('/');
 @endphp
-          @if($baseUrl==="http://1279-197-248-106-13.ngrok-free.app")
+          @if($baseUrl==="https://540e-105-161-214-68.ngrok-free.app")
               <img src="{{ secure_asset('images/FoodAppLogo.png') }}" alt="Food App Logo" srcset="">
 
           @else
-              <img src="{{ asset('images/FoodAppLogo.png') }}" alt="Food App Logo" srcset="">
+              <img src="{{ secure_asset('images/FoodAppLogo.png') }}" alt="Food App Logo" srcset="">
           @endif
 
 

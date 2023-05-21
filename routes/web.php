@@ -47,3 +47,7 @@ Route::get('/cart/clear', array('uses' => \App\Http\Controllers\CartController::
 
 Route::get('/cart/remove/{productId}', array('uses' => \App\Http\Controllers\CartController::class . '@remove'));
 
+Route::get('/translate', \App\Http\Controllers\TranslationController::class . '@form');
+Route::post('/translate', \App\Http\Controllers\TranslationController::class . '@translate');
+
+
