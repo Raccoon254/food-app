@@ -27,4 +27,32 @@ class TranslationController extends Controller
 
         return back()->with('translated_text', $result['text']);
     }
+
+    /**
+     * @throws GoogleException
+     * @throws ServiceException
+     */
+    /**
+     * @throws GoogleException
+     * @throws ServiceException
+     */
+    public function translateText(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $translate = new TranslateClient(['key' => env('GOOGLE_TRANSLATE_API_KEY')]);
+
+        $translatedTexts = [];
+
+        foreach ($request->input('texts') as $textItem) {
+            $result = $translate->translate($textItem['text'], [
+                'target' => $request->input('language'),
+            ]);
+
+            $translatedTexts[] = ['id' => $textItem['id'], 'text' => $result['text']];
+        }
+
+        return response()->json($translatedTexts);
+    }
+
+
+
 }

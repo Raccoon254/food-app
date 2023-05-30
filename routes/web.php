@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TranslationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,5 +50,9 @@ Route::get('/cart/remove/{productId}', array('uses' => \App\Http\Controllers\Car
 
 Route::get('/translate', \App\Http\Controllers\TranslationController::class . '@form');
 Route::post('/translate', \App\Http\Controllers\TranslationController::class . '@translate');
+
+Route::post('/translate-text', [TranslationController::class, 'translateText']);
+
+
 
 

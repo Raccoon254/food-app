@@ -11,7 +11,7 @@
               <img src="{{ secure_asset('images/FoodAppLogo.png') }}" alt="Food App Logo" srcset="">
 
           @else
-              <img src="{{ secure_asset('images/FoodAppLogo.png') }}" alt="Food App Logo" srcset="">
+              <img src="{{ asset('images/FoodAppLogo.png') }}" alt="Food App Logo" srcset="">
           @endif
 
 
@@ -70,7 +70,7 @@
         </script>
 
 
-        <a class="hidden btn sm:flex ring-2 ring-blue-500  btn-warning m-3 btn-outline">Get Location</a>
+        <a class="hidden btn sm:flex ring-2 ring-blue-500  btn-warning m-3 btn-outline data">Get Location</a>
 
         <div class="m-3">
             <!-- The button to open modal -->
@@ -86,12 +86,12 @@
         <div class="modal">
             <div class="modal-box relative">
                 <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                <h3 class="text-lg font-bold text-center">Entrance to a personal account</h3>
-                <p class="text-center">Please login to your account to proceed.</p>
+                <h3 class="text-lg font-bold text-center data">Entrance to a personal account</h3>
+                <p class="text-center data">Please login to your account to proceed.</p>
                 <form action="" class="w-full flex flex-wrap content-center justify-center items-center align-middle flex-col">
                     <input type="text" placeholder="Phone Number :" class="input input-bordered input-warning w-full max-w-xs m-4" />
                     <input type="submit"class="input input-bordered input-warning w-full max-w-xs m-4" />
-                    <span class=" text-center text-sm">By clicking the button, you agree with user agreement and on personal data processing</span>
+                    <span class=" text-center text-sm data">By clicking the button, you agree with user agreement and on personal data processing</span>
                 </form>
             </div>
         </div>
@@ -101,25 +101,26 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
             </label>
             <ul tabindex="0" x-show="open" @click.away="open = false" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60">
-                <li><a><span class="btn btn-circle avatar border-warning">
+                <li><a class="data"><span class="btn btn-circle avatar border-warning">
                             <i class="fa-solid fa-bars"></i>
                         </span>Menu</a></li>
-                <li><a><span class="btn btn-circle avatar border-warning">
+                <li><a class="data"><span class="btn btn-circle avatar border-warning">
                             <i class="fa-solid fa-truck"></i>
                         </span>Delivery</a></li>
-                <li><a><span class="btn btn-circle avatar border-warning">
+                <li><a class="data"><span class="btn btn-circle avatar border-warning">
                             <i class="fa-solid fa-rocket"></i>
                         </span>Franchise</a></li>
-                <li><a><span class="btn btn-circle avatar border-warning">
+                <li><a class="data"><span class="btn btn-circle avatar border-warning">
                             <i class="fa-solid fa-circle-info"></i>
                         </span>About Us</a></li>
-                <li><a><span class="btn btn-circle avatar border-warning">
+                <li><a class="data"><span class="btn btn-circle avatar border-warning">
                             <i class="fa-solid fa-phone-volume"></i>
                         </span>
                         Contact Us</a></li>
-                <li><a>
+                <li><a class="data">
                         <span class="btn btn-circle avatar border-warning">
-                            <i class="fa-solid fa-lock"></i></span>
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
                         Login
                     </a></li>
             </ul>

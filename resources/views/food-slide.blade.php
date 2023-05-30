@@ -6,20 +6,32 @@
         <div class="card-body m-3 p-0">
             <div class="flex m-0 p-0 place-items-center">
                 <div class="w-8/12 flex flex-col">
-                    <h2 class="card-title">
-                        {{ $product->name }}
-                        <div class="badge badge-secondary">NEW</div>
-                    </h2>
-                    <p class="text-sm">{{$product->description}}</p>
+                    <div class="flex place-items-center">
+
+                        <h2 class="card-title data mr-1" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            {{ $product->name }}
+                        </h2>
+
+                        <div class="badge badge-secondary data">NEW</div>
+
+                    </div>
+
+                    <p class="text-sm data">{{$product->description}}</p>
+
                     <div class="bottom flex flex-col">
                         <div class="current-price">{{$product->price}}</div>
                     </div>
+
                 </div>
+
                 <div class="w-4/12">
-                    <button onclick="addToCart({{ $product->id }})" class="w-full btn btn-warning btn-outline rounded-full ring-2 ring-blue-500 ring-inset">Order</button>
+                    <button onclick="addToCart({{ $product->id }})" class="w-full btn btn-warning btn-outline rounded-full ring-2 ring-blue-500 ring-inset data">Order</button>
                 </div>
+
             </div>
+
         </div>
+
     </div>
     <script>
         window.onload = function() {
@@ -41,7 +53,7 @@
             })
                 .then(response => response.json())
                 .then(cart => {
-                    console.log(cart);
+                    //console.log(cart);
                     updateCartUI(cart);
                 });
         }

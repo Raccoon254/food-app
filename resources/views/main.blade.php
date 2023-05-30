@@ -28,7 +28,7 @@
         $categories = App\Models\Product::pluck('category')->unique();
     @endphp
 
-    <div class="flex gap-2 overflow-x-scroll">
+    <div class="flex gap-0.5 overflow-x-scroll">
         @foreach ($categories as $category)
             @php
                 $product = App\Models\Product::where('category', $category)->first();
@@ -46,7 +46,6 @@
             @include('food-slide')
         @endforeach
     </div>
-
 
 </div>
 </body>

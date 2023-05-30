@@ -11,10 +11,10 @@
                 <a class="btn btn-ghost normal-case text-xl">Lamian</a>
                 <ul class="menu menu-horizontal px-1">
 
-                    <li><a href="#" class="all-products-link">All Products</a></li>
+                    <li><a href="#" class="all-products-link data">All Products</a></li>
                     <!-- loop over categories -->
                     @foreach ($categories as $category)
-                        <li><a href="#" class="category-link" data-category="{{ $category }}">{{ $category }}</a></li>
+                        <li><a href="#" class="category-link data" data-category="{{ $category }}">{{ $category }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -54,10 +54,10 @@
                     </label>
                     <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                         <div class="card-body">
-                            <span id="cartItems" class="font-bold text-lg">0 Items</span>
-                            <span id="cartSubtotal" class="text-info">Subtotal: $0</span>
+                            <span id="cartItems" class="font-bold text-lg data">0 Items</span>
+                            <span id="cartSubtotal" class="text-info data">Subtotal: $0</span>
                             <div class="card-actions">
-                                <a href="/cart" class="btn btn-primary btn-block">View cart</a>
+                                <a href="/cart" class="btn btn-primary btn-block data">View cart</a>
                             </div>
                         </div>
                     </div>

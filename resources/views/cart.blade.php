@@ -1,11 +1,17 @@
 <!doctype html>
 <html lang="en" class="dark">
 <head>
+    <script src="https://kit.fontawesome.com/af6aba113a.js" crossorigin="anonymous"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ mix('js/app.js')}}"></script>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Checkout</title>
+    <title class="data">Checkout</title>
 </head>
 <body class="antialiased simplebar">
 <div class="w-full">
@@ -18,11 +24,11 @@
         <!-- head -->
         <thead>
         <tr>
-            <th>Product</th>
+            <th class="data">Product</th>
             <th>
-                <div class="hidden md:block">Price</div>
+                <div class="hidden md:block data">Price</div>
             </th>
-            <th>Quantity</th>
+            <th class="data">Quantity</th>
             <th><a href="{{ URL::to('/cart/clear') }}" class="btn btn-ghost"><i class="fa-solid fa-trash"></i></a>
             </th>
         </tr>
@@ -31,7 +37,7 @@
         <!-- row -->
         @if(sizeof($cart)===0)
             <tr>
-                <td>No data in cart</td>
+                <td class="data">No data in cart</td>
             </tr>
         @else
 
@@ -48,7 +54,7 @@
                         </div>
                     </div>
                     <div>
-                        <div class="font-bold">{{ $details['name'] }}</div>
+                        <div class="font-bold data">{{ $details['name'] }}</div>
                             <div class="text-sm xxs">${{ $details['price'] }}</div>
                             <div class="text-sm opacity-50 xxw">{{ $details['quantity'] }}</div>
 
@@ -81,7 +87,7 @@
             <tfoot>
             <tr>
                 <th>
-                    <a href="" class="btn btn-outline btn-warning ring-2 ring-blue-500 ring-inset rounded-full">Checkout</a>
+                    <a href="" class="btn btn-outline btn-warning ring-2 ring-blue-500 ring-inset rounded-full data">Checkout</a>
                 </th>
                 <th>
                     <div class="hidden md:block">
